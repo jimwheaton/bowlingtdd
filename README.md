@@ -28,3 +28,10 @@ class Game {
 ### Tooling
 
 [VSCode Jest extension](https://github.com/jest-community/vscode-jest)
+
+### Running the tests
+
+```bash
+npm install
+npm run test:watch
+```
