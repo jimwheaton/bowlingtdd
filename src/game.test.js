@@ -31,4 +31,13 @@ describe("game", () => {
 
     expect(game.score()).toEqual(20);
   });
+
+  test("can score a strike", () => {
+    game.roll(10);
+    game.roll(2);
+    game.roll(3);
+    rollMany(16, 0);
+
+    expect(game.score()).toEqual(20);
+  });
 });

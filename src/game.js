@@ -8,16 +8,41 @@ class Game {
 
   score() {
     let score = 0;
-
-    for (var frame = 0, roll = 0; frame < 10; frame++, roll += 2) {
-      let frameScore = this._rolls[roll] + this._rolls[roll + 1];
-      score += frameScore;
-      if (frameScore === 10) {
-        score += this._rolls[roll + 2];
+    let frameIndex = 0;
+    for (var frame = 0; frame < 10; frame++) {
+      if (this._isStrike(frameIndex)) {
+        score += 10 + this._strikeBonus(frameIndex);
+        frameIndex += 1;
+      } else if (this._isSpare(frameIndex)) {
+        score += 10 + this._spareBonus(frameIndex);
+        frameIndex += 2;
+      } else {
+        score += this._frameScore(frameIndex);
+        frameIndex += 2;
       }
     }
 
     return score;
+  }
+
+  _isStrike(frameIndex) {
+    return this._rolls[frameIndex] === 10;
+  }
+
+  _strikeBonus(frameIndex) {
+    return this._rolls[frameIndex + 1] + this._rolls[frameIndex + 2];
+  }
+
+  _isSpare(frameIndex) {
+    return this._rolls[frameIndex] + this._rolls[frameIndex + 1] === 10;
+  }
+
+  _spareBonus(frameIndex) {
+    return this._rolls[frameIndex + 2];
+  }
+
+  _frameScore(frameIndex) {
+    return this._rolls[frameIndex] + this._rolls[frameIndex + 1];
   }
 }
 
