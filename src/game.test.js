@@ -40,4 +40,10 @@ describe("game", () => {
 
     expect(game.score()).toEqual(20);
   });
+
+  test("perfect game", () => {
+    rollMany(12, 10);
+
+    expect(game.score()).toEqual(300);
+  });
 });
