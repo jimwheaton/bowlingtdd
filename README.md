@@ -24,3 +24,7 @@ class Game {
   score(): int;
 }
 ```
+
+### Tooling
+
+[VSCode Jest extension](https://github.com/jest-community/vscode-jest)
