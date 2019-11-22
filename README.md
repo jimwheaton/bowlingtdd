@@ -21,7 +21,7 @@ class Game {
   roll(pins: number): void {}
 
   // called only at the end of the game
-  score(): int;
+  score(): number;
 }
 ```
 
